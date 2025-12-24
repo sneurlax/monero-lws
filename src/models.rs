@@ -55,6 +55,7 @@ impl<T> MoneroResult<T> {
     }
 }
 
+// Compatibility with version 0.1
 fn number_or_boolean<'de, D>(deserializer: D) -> Result<bool, D::Error>
 where
     D: Deserializer<'de>,
@@ -126,6 +127,8 @@ pub struct AddressTxs {
     pub scanned_block_height: u64,
     pub start_height: u64,
     pub blockchain_height: u64,
+    // May not be present in version 0.3
+    #[serde(default)]
     pub transactions: Vec<Transaction>,
 }
 
