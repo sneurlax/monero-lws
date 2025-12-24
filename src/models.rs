@@ -141,6 +141,8 @@ pub struct Transaction {
     pub total_sent: String,
     pub unlock_time: u64,
     pub height: Option<u64>,
+    // May not be present in version 0.3
+    #[serde(default)]
     pub spent_outputs: Vec<SpendObject>,
     pub payment_id: Option<HashString<PaymentId>>,
     #[serde(deserialize_with = "number_or_boolean")]
